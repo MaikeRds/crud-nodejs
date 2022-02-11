@@ -13,18 +13,12 @@ const models = {}
 //  const routeAdm = app.route("/users/admins")
 //const routeId = app.route("/users/:id")
 
-models.findAll = (req, res) => {
-
-    db.find({}).sort({ name: 1 }).exec((err, users) => {
-
-        if (err) {
-          //  app.utils.error.send(err, req, res)
-          console.log('Erro' + err);
-        } 
-        console.log('Lista de Users', users);
-        res.json(users)
+models.findAll = () => {
+    return new Promise((resolve, reject) => {
+        db.find({}, async function (err, users) {
+                err ? reject(err) : resolve(users);
+        })
     });
-
 };
 
 module.exports = models;

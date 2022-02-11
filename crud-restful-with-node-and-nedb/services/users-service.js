@@ -1,8 +1,8 @@
 const models = require("../models/users-models");
 const service = {}
 
-service.findAll = () => {
-  const users = models.findAll();
+service.findAll = async () => {
+  const users = await models.findAll();
   return users;
 }
 
