@@ -15,7 +15,7 @@ const models = {}
 
 models.findAll = () => {
     return new Promise((resolve, reject) => {
-        db.find({}, async function (err, users) {
+        db.find({}, (err, users) => {
                 err ? reject(err) : resolve(users);
         })
     });
